@@ -23,6 +23,7 @@ jobs:
           node-version: '14'
           cache: yarn
           registry-url: 'https://npm.pkg.github.com'
+          scope: '@patrick91'
 
       - run: yarn
       - run: grunt release --skip-tests
