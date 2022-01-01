@@ -7,6 +7,9 @@ const mobiledoc = require('../../../../../lib/mobiledoc');
 const postsMetaSchema = require('../../../../../data/schema').tables.posts_meta;
 
 function removeMobiledocFormat(frame) {
+    return;
+
+    // eslint-disable-next-line
     if (frame.options.formats && frame.options.formats.includes('mobiledoc')) {
         frame.options.formats = frame.options.formats.filter((format) => {
             return (format !== 'mobiledoc');
