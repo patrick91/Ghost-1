@@ -7,9 +7,6 @@ jobs:
   automate:
     runs-on: ubuntu-18.04
     env:
-      RELEASE_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-      RELEASE_NOTIFICATION_URL: ${{ secrets.RELEASE_NOTIFICATION_URL }}
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
       FORCE_COLOR: 1
     steps:
       - uses: actions/checkout@v2
@@ -22,9 +19,12 @@ jobs:
         with:
           node-version: '14'
           cache: yarn
-          registry-url: 'https://npm.pkg.github.com'
           scope: '@patrick91'
+          registry-url: 'https://npm.pkg.github.com'
+
 
       - run: yarn
       - run: grunt release --skip-tests
       - run: npm publish
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
